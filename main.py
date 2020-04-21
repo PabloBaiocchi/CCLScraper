@@ -1,7 +1,10 @@
 from time import localtime, sleep
+import datetime
 from adr import adrs
 from iol import parseIOL, IOL
 from yahoo import yahooFinance, parseYahoo
+
+market_close = datetime.datetime.now().replace(hour=17, minute=1, second=0,microsecond = 0)
 
 def shuffle(array):
     newArray=array[1:].copy()
@@ -10,7 +13,7 @@ def shuffle(array):
 
 def run():
     companies=adrs
-    while True:
+    while datetime.datetime.now() < market_close:
         companies=shuffle(companies)
         for company in companies:
             print(f"--------- {company['symbol']} ---------")
