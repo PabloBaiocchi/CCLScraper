@@ -1,0 +1,2 @@
+#!/bin/bash
+0 11 * * 12345 /home/bautista/CCLScraper/run_scraper

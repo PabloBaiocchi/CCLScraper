@@ -4,6 +4,7 @@ from adr import adrs
 from iol import parseIOL, IOL
 from yahoo import yahooFinance, parseYahoo
 
+#5:01 closing
 market_close = datetime.datetime.now().replace(hour=17, minute=1, second=0,microsecond = 0)
 
 def shuffle(array):
