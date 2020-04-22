@@ -14,7 +14,7 @@ def shuffle(array):
 
 def run():
     companies=adrs
-    while datetime.datetime.now() > market_close:
+    while datetime.datetime.now() < market_close:
         companies=shuffle(companies)
         for company in companies:
             print(f"--------- {company['symbol']} ---------")
