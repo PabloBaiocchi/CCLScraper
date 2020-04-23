@@ -76,4 +76,4 @@ trans_de_gas={
     'id': 2681
 }
 
-adrs=[ggal,bbar,bma,pamp,ypf,cres,gold,edenor,irsa,pbr,telecom, tenaris,trans_de_gas]
+adrs=[ggal,bbar,bma,pamp,ypf,cres,gold,pbr,telecom,trans_de_gas]
