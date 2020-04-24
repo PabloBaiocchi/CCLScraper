@@ -76,4 +76,39 @@ trans_de_gas={
     'id': 2681
 }
 
-adrs=[ggal,bbar,bma,pamp,ypf,cres,gold,pbr,telecom,trans_de_gas]
+amazon={
+    'symbol': 'AMZN',
+    'ratio': 72
+}
+
+disney={
+    'symbol':'DISN',
+    'ratio': 4
+}
+
+netflix={
+    'symbol':'NFLX',
+    'ratio': 16
+}
+
+tesla={
+    'symbol':'DISN',
+    'ratio': 15
+}
+
+exxon={
+    'symbol':'XOM',
+    'ratio': 5
+}
+
+sap={
+    'symbol':'SAP',
+    'ratio':3
+}
+
+atNt={
+    'symbol':'T',
+    'ratio':3
+}
+
+tickers=[ggal,bbar,bma,pamp,ypf,cres,gold,pbr,telecom,tenaris,irsa,edenor,trans_de_gas,disney,amazon,netflix,tesla,exxon,sap,atNt]

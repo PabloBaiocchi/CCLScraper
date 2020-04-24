@@ -1,8 +1,12 @@
 import requests
 from time import localtime, sleep
-from datetime import date
+import datetime
+from stocks import tickers 
+from main import market_close
 
-today = date.today()
+#Scrapes live market data from yahoo finance website
+
+today = datetime.date.today()
 
 yahooSession = requests.session()
 
@@ -18,3 +22,23 @@ def yahooFinance(symbol):
 
 def parseYahoo(response):
     return f"{response['symbol']},{response['price']},{response['time'][3]},{response['time'][4]},{today}\n"
+
+
+#Open file
+usa_dump=open('./usa.txt','a')
+
+#Scrape
+while datetime.datetime.now() < market_close:
+    for ticker in tickers:
+        usa=None
+        try:
+            usa_response=yahooFinance(ticker['symbol'])
+        except:
+            pass
+        parsed=parseYahoo(usa_response)
+        print(parsed)
+        usa_dump.write(parsed)
+        sleep(1) 
+
+#Close files
+usa_dump.close()
