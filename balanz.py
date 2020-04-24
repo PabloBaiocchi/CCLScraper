@@ -1,5 +1,4 @@
 import websocket
-import ssl
 import json
 import datetime
 import requests
