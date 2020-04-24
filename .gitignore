@@ -134,3 +134,4 @@ ratios.txt
 /data
 nohup.out
 .DS_Store
+*.log

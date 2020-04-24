@@ -1,5 +1,5 @@
 #!/bin/bash
 
-nohup python3 -u yahoo.py &
-nohup python3 -u balanz.py &
-exit 1
+python3 yahoo.py
+python3 balanz.py
+exit 0

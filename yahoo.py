@@ -38,7 +38,7 @@ while datetime.datetime.now() < market_close:
         parsed=parseYahoo(usa_response)
         print(parsed)
         usa_dump.write(parsed)
-        sleep(1) 
+        sleep(2) 
 
 #Close files
 usa_dump.close()
