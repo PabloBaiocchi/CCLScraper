@@ -6,26 +6,32 @@ from main import market_close
 
 ##Scrapes live market data directly from Balanz websocket
 
-arg_dump=open('./arg.txt','a')
 
-session = requests.session()
-session.headers = {
-    "Host":"clientes.balanz.com",
-    "origin":"https://clientes.balanz.com/",
-    "Connection":"keep-alive",
-    "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:75.0) Gecko/20100101 Firefox/75.0",
-    "cookie":"_ga=GA1.2.636383094.1586267490; _fbp=fb.1.1586267490167.578089430; __zlcmid=xbj2iCIJ4e5fED; _gid=GA1.2.1551867514.1587732483; _gat=1"
-}
+access_token = ''
 
-# Log in, get token from response
-login_response = session.post('https://clientes.balanz.com/api/v1/login', data={
-    "pass":"2WAma3Ju2kNp",
-    "user":"bautistabaiocchilora"
-}).json()
+with open('balanz.credentials') as credentials_file:
+    credentials = json.load(credentials_file)
+    session = requests.session()
+    session.headers = {
+        "Host":"clientes.balanz.com",
+        "origin":"https://clientes.balanz.com/",
+        "Connection":"keep-alive",
+        "User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:75.0) Gecko/20100101 Firefox/75.0",
+        "cookie":"_ga=GA1.2.636383094.1586267490; _fbp=fb.1.1586267490167.578089430; __zlcmid=xbj2iCIJ4e5fED; _gid=GA1.2.1551867514.1587732483; _gat=1"
+    }
 
-access_token = login_response['AccessToken']
+    # Log in, get token from response
+    login_response = session.post('https://clientes.balanz.com/api/v1/login', data={
+        "pass":credentials['pass'],
+        "user":credentials['user']
+    }).json()
+    access_token = login_response['AccessToken']
+    session.close()
+
 
 print(f"Access Token: {access_token}")
+
+arg_dump=open('./data/arg.txt','a')
 
 def parse_message(message):
     message = json.loads(message)
@@ -43,6 +49,7 @@ def parse_message(message):
 def on_message(ws, message):
     #Close at market close
     if datetime.datetime.now() > market_close:
+        print('Market closed, shutting down.')
         arg_dump.close()
         ws.close()
     else:
