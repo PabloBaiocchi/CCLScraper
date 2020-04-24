@@ -46,7 +46,9 @@ def on_message(ws, message):
         arg_dump.close()
         ws.close()
     else:
-        arg_dump.write(parse_message(message))
+        out = parse_message(message)
+        print(out)
+        arg_dump.write(out)
 
 
 def on_error(ws, error):
