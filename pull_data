@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DIR="data"
+[ ! -d "$DIR" ] && mkdir -p "$DIR"
+
+scp bautista@192.168.0.126:CCLScraper/arg.txt ./data
+scp bautista@192.168.0.126:CCLScraper/usa.txt ./data

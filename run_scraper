@@ -1,0 +1,5 @@
+#!/bin/bash
+
+python3 yahoo.py
+python3 balanz.py
+exit 0
