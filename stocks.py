@@ -92,7 +92,7 @@ netflix={
 }
 
 tesla={
-    'symbol':'DISN',
+    'symbol':'TSLA',
     'ratio': 15
 }
 
