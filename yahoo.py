@@ -25,7 +25,7 @@ def parseYahoo(response):
 
 
 #Open file
-usa_dump=open('./usa.txt','a')
+usa_dump=open('./data/usa.txt','a')
 
 #Scrape
 while datetime.datetime.now() < market_close:
@@ -39,6 +39,9 @@ while datetime.datetime.now() < market_close:
         print(parsed)
         usa_dump.write(parsed)
         sleep(2) 
+
+
+print('Market closed, shutting down.')
 
 #Close files
 usa_dump.close()
