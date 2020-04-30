@@ -11,7 +11,7 @@ directory = pathlib.Path(__file__).parent.absolute()
 
 access_token = ''
 
-with open(directory+'/balanz.credentials') as credentials_file:
+with open(f"{directory}/balanz.credentials") as credentials_file:
     credentials = json.load(credentials_file)
     session = requests.session()
     session.headers = {
@@ -33,7 +33,7 @@ with open(directory+'/balanz.credentials') as credentials_file:
 
 print(f"Access Token: {access_token}")
 
-arg_dump=open(directory+'/data/arg.txt','a')
+arg_dump=open(f"{directory}/data/arg.txt",'a')
 
 def parse_message(message):
     message = json.loads(message)
