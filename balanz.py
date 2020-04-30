@@ -3,14 +3,15 @@ import json
 import datetime
 import requests
 from main import market_close
-import os
+import pathlib
 
 ##Scrapes live market data directly from Balanz websocket
 
+directory = pathlib.Path(__file__).parent.absolute()
 
 access_token = ''
 
-with open(os.getcwd()+'/balanz.credentials') as credentials_file:
+with open(directory+'/balanz.credentials') as credentials_file:
     credentials = json.load(credentials_file)
     session = requests.session()
     session.headers = {
@@ -32,7 +33,7 @@ with open(os.getcwd()+'/balanz.credentials') as credentials_file:
 
 print(f"Access Token: {access_token}")
 
-arg_dump=open(os.getcwd()+'/data/arg.txt','a')
+arg_dump=open(directory+'/data/arg.txt','a')
 
 def parse_message(message):
     message = json.loads(message)
