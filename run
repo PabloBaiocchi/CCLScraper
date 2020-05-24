@@ -1,0 +1,5 @@
+#!/bin/bash
+#!/usr/bin/env python
+
+
+python3 test.py
