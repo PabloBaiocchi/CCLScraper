@@ -1,5 +1,5 @@
 #!/bin/bash
 #!/usr/bin/python3
 
-
-python3 test.py
+echo $PWD
+python3 $PWD/test.py
