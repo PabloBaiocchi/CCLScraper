@@ -1,5 +1,4 @@
 #!/bin/bash
 #!/usr/bin/python3
 
-echo $PWD
-python3 $PWD/test.py
+python3 $PWD/CCLScraper/test.py
