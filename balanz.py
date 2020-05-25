@@ -33,7 +33,7 @@ with open(f"{directory}/balanz.credentials") as credentials_file:
     session.close()
 
 
-print(f"Access Token: {access_token}")
+print(f"[Balanz WS]: Access Token: {access_token}")
 
 arg_dump=open(f"{directory}/data/arg.txt",'a')
 
@@ -53,12 +53,11 @@ def parse_message(message):
 def on_message(ws, message):
     #Close at market close
     if datetime.datetime.now() > market_close:
-        print('Market closed, shutting down.')
+        print('[Balanz]: Market closed, shutting down.')
         arg_dump.close()
         ws.close()
     else:
         out = parse_message(message)
-        print(out)
         arg_dump.write(out)
 
 
@@ -67,10 +66,10 @@ def on_error(ws, error):
 
 def on_close(ws):
     arg_dump.close()
-    print("### closed balanz stream ###")
+    print("[Balanz]: ### closed balanz stream ###")
 
 def on_open(ws):
-    print("Connection established.")
+    print("[Balanz]: Connection established.")
     ws.send(json.dumps({"panel":0,"token":access_token}))
     ws.send(json.dumps({"idwatchlist":38852,"token":access_token}))
 

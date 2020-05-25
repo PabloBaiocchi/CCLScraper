@@ -1,4 +1,9 @@
 #!/bin/bash
 #!/usr/bin/python3
 
-python3 $PWD/CCLScraper/test.py
+process_count = ps aux | grep balanz.py | wc -l
+if [process_count < 2]
+then
+echo "Starting Balanz Scraper"
+python3 $PWD/CCLScraper/balanz.py
+fi
